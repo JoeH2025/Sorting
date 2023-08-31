@@ -85,6 +85,68 @@ public class SortingMethods
         }
         return Arrays.toString(arr);
     }
+    public static String mergeSort(int[] arr)
+    {
+        return Arrays.toString(mergeSort(0, arr.length, arr));
+    }
+    public static int[] mergeSort(int start, int end, int[] arr)
+    {
+        if(start == end)
+        {
+            System.out.println("a");
+            return null;
+        }
+        else
+        {
+            int mid = (start+end)/2;
+            mergeSort(start, mid, arr);
+            mergeSort(mid+1, end, arr);
+            return merge(start, mid, end, arr);
+        }
+    }
+    public static int[] merge(int start, int mid, int end, int[] arr)
+    {
+        System.out.println("b");
+        int index = start;
+        int index2 = mid;
+        int newArrIndex = 0;
+        int[] newArr = new int[end-start];
+        while(index < mid)
+        {
+            if(arr[index] > arr[index2])
+            {
+                newArr[newArrIndex] = arr[index];
+                index++;
+            }
+            else
+            {
+                newArr[newArrIndex] = arr[index2];
+                index2++;
+            }
+            newArrIndex++;
+            if(index2 >= end)
+            {
+                for(int i = index; i < mid; i++)
+                {
+                    newArr[i-start] = arr[i];
+                }
+                break;
+            }
+        }
+        if(index2 < end)
+        {
+            for(int i = index2; i < end; i++)
+            {
+                newArr[i-start] = arr[i];
+            }
+        }
+        for(int i = 0; i < end-start; i++)
+        {
+            arr[i+start] = newArr[i];
+        }
+        System.out.println("c");
+        return arr;
+    }
     public static void test()
     {
         int[] a = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
@@ -112,5 +174,12 @@ public class SortingMethods
         System.out.println(bubbleSort(c));
         System.out.println(bubbleSort(d));
         System.out.println(bubbleSort(e));
+        
+        System.out.println("The following are for Merge Sort");
+        System.out.println(mergeSort(a));
+        System.out.println(mergeSort(b));
+        System.out.println(mergeSort(c));
+        System.out.println(mergeSort(d));
+        System.out.println(mergeSort(e));
     }
 }
