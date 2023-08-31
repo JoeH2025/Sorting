@@ -93,7 +93,7 @@ public class SortingMethods
     {
         if(start == end)
         {
-            System.out.println("a");
+            //System.out.println("a");
             return null;
         }
         else
@@ -106,12 +106,12 @@ public class SortingMethods
     }
     public static int[] merge(int start, int mid, int end, int[] arr)
     {
-        System.out.println("b");
+        //System.out.println("b");
         int index = start;
         int index2 = mid;
         int newArrIndex = 0;
-        int[] newArr = new int[end-start];
-        while(index < mid)
+        int[] newArr = new int[end-start+1];
+        while(index <= mid && index2 < end)
         {
             if(arr[index] > arr[index2])
             {
@@ -124,14 +124,6 @@ public class SortingMethods
                 index2++;
             }
             newArrIndex++;
-            if(index2 >= end)
-            {
-                for(int i = index; i < mid; i++)
-                {
-                    newArr[i-start] = arr[i];
-                }
-                break;
-            }
         }
         if(index2 < end)
         {
@@ -140,11 +132,18 @@ public class SortingMethods
                 newArr[i-start] = arr[i];
             }
         }
+        else if(index2 >= end)
+        {
+            for(int i = index; i < mid; i++)
+            {
+                newArr[i-start] = arr[i];
+            }
+        }
         for(int i = 0; i < end-start; i++)
         {
             arr[i+start] = newArr[i];
         }
-        System.out.println("c");
+        //System.out.println("c");
         return arr;
     }
     public static void test()
