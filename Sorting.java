@@ -5,7 +5,7 @@ import java.util.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class SortingMethods
+public class Sorting
 {
     // instance variables - replace the example below with your own
     
@@ -13,7 +13,7 @@ public class SortingMethods
     /**
      * Constructor for objects of class SortingMethods
      */
-    public SortingMethods()
+    public Sorting()
     {
         // initialise instance variables
         
@@ -25,7 +25,7 @@ public class SortingMethods
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static String selectionSort(int[] arr)
+    public static void selectionSort(int[] arr)
     {
         int lowIndex = 0;
         int temp;
@@ -45,9 +45,9 @@ public class SortingMethods
             lowIndex = i+1;
         }
         
-        return Arrays.toString(arr);
+        //return Arrays.toString(arr);
     }
-    public static String bubbleSort(int[] arr)
+    public static void bubbleSort(int[] arr)
     {
         int temp;
         for(int i = 0; i < arr.length; i++)
@@ -62,9 +62,9 @@ public class SortingMethods
                 }
             }
         }
-        return Arrays.toString(arr);
+        //return Arrays.toString(arr);
     }
-    public static String insertionSort(int[] arr)
+    public static void insertionSort(int[] arr)
     {
         int temp;
         for(int i = 1; i < arr.length; i++)
@@ -83,11 +83,12 @@ public class SortingMethods
                 }
             }
         }
-        return Arrays.toString(arr);
+        //return Arrays.toString(arr);
     }
-    public static String mergeSort(int[] arr)
+    public static void mergeSort(int[] arr)
     {
-        return Arrays.toString(mergeSort(0, arr.length, arr));
+        Arrays.toString(mergeSort(0, arr.length, arr));
+        // return Arrays.toString(mergeSort(0, arr.length, arr));
     }
     public static int[] mergeSort(int start, int end, int[] arr)
     {
@@ -148,37 +149,79 @@ public class SortingMethods
     }
     public static void test()
     {
-        int[] a = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
+        //{1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
+        //{};
+        //{89, 89, 89, 9, 9, 6, 3, 0, 0};
+        //{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        //{1, 0};
+        int[] a = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};;
         int[] b = {};
         int[] c = {89, 89, 89, 9, 9, 6, 3, 0, 0};
         int[] d = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] e = {1, 0};
         System.out.println("The following are for Selection Sort");
-        System.out.println(selectionSort(a));
-        System.out.println(selectionSort(b));
-        System.out.println(selectionSort(c));
-        System.out.println(selectionSort(d));
-        System.out.println(selectionSort(e));
+        selectionSort(a);
+        selectionSort(b);
+        selectionSort(c);
+        selectionSort(d);
+        selectionSort(e);
+        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(b));
+        System.out.println(Arrays.toString(c));
+        System.out.println(Arrays.toString(d));
+        System.out.println(Arrays.toString(e));
         
+        
+        int[] a1 = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
+        int[] b1 = {};
+        int[] c1 = {89, 89, 89, 9, 9, 6, 3, 0, 0};
+        int[] d1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] e1 = {1, 0};
         System.out.println("The following are for Insertion Sort");
-        System.out.println(insertionSort(a));
-        System.out.println(insertionSort(b));
-        System.out.println(insertionSort(c));
-        System.out.println(insertionSort(d));
-        System.out.println(insertionSort(e));
+        insertionSort(a1);
+        insertionSort(b1);
+        insertionSort(c1);
+        insertionSort(d1);
+        insertionSort(e1);
+        System.out.println(Arrays.toString(a1));
+        System.out.println(Arrays.toString(b1));
+        System.out.println(Arrays.toString(c1));
+        System.out.println(Arrays.toString(d1));
+        System.out.println(Arrays.toString(e1));
         
+        
+        int[] a2 = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
+        int[] b2 = {};
+        int[] c2 = {89, 89, 89, 9, 9, 6, 3, 0, 0};
+        int[] d2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] e2 = {1, 0};
         System.out.println("The following are for Bubble Sort");
-        System.out.println(bubbleSort(a));
-        System.out.println(bubbleSort(b));
-        System.out.println(bubbleSort(c));
-        System.out.println(bubbleSort(d));
-        System.out.println(bubbleSort(e));
+        bubbleSort(a2);
+        bubbleSort(b2);
+        bubbleSort(c2);
+        bubbleSort(d2);
+        bubbleSort(e2);
+        System.out.println(Arrays.toString(a2));
+        System.out.println(Arrays.toString(b2));
+        System.out.println(Arrays.toString(c2));
+        System.out.println(Arrays.toString(d2));
+        System.out.println(Arrays.toString(e2));
         
+        int[] a3 = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
+        int[] b3 = {};
+        int[] c3 = {89, 89, 89, 9, 9, 6, 3, 0, 0};
+        int[] d3 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] e3 = {1, 0};
         System.out.println("The following are for Merge Sort");
-        System.out.println(mergeSort(a));
-        System.out.println(mergeSort(b));
-        System.out.println(mergeSort(c));
-        System.out.println(mergeSort(d));
-        System.out.println(mergeSort(e));
+        mergeSort(a3);
+        mergeSort(b3);
+        mergeSort(c3);
+        mergeSort(d3);
+        mergeSort(e3);
+        System.out.println(Arrays.toString(a3));
+        System.out.println(Arrays.toString(b3));
+        System.out.println(Arrays.toString(c3));
+        System.out.println(Arrays.toString(d3));
+        System.out.println(Arrays.toString(e3));
     }
 }
