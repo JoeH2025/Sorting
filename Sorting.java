@@ -140,9 +140,10 @@ public class Sorting
                 newArr[i-start] = arr[i];
             }
         }
-        for(int i = 0; i < newArr.length-1; i++)
+        for(int i = 0; i < newArr.length; i++)
         {
-            newArr[i] = arr[start + i];
+           System.out.println(start + "," + i);
+            arr[start + i] = newArr[i];
         }
         //System.out.println("c");
         return arr;
@@ -154,7 +155,7 @@ public class Sorting
         //{89, 89, 89, 9, 9, 6, 3, 0, 0};
         //{1, 2, 3, 4, 5, 6, 7, 8, 9};
         //{1, 0};
-        int[] a = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};;
+        int[] a = {1, 643, -574, 2, 9, -6, 3, 0, 0, 0};
         int[] b = {};
         int[] c = {89, 89, 89, 9, 9, 6, 3, 0, 0};
         int[] d = {1, 2, 3, 4, 5, 6, 7, 8, 9};
