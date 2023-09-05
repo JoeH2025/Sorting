@@ -94,7 +94,7 @@ public class SortingMethods
         if(start == end)
         {
             //System.out.println("a");
-            return null;
+            return arr;
         }
         else
         {
@@ -111,7 +111,7 @@ public class SortingMethods
         int index2 = mid;
         int newArrIndex = 0;
         int[] newArr = new int[end-start+1];
-        while(index <= mid && index2 < end)
+        while(index < mid && index2 < end)
         {
             if(arr[index] > arr[index2])
             {
@@ -132,16 +132,16 @@ public class SortingMethods
                 newArr[i-start] = arr[i];
             }
         }
-        else if(index2 >= end)
+        else if(index < mid)
         {
             for(int i = index; i < mid; i++)
             {
                 newArr[i-start] = arr[i];
             }
         }
-        for(int i = 0; i < end-start; i++)
+        for(int i = 0; i < newArr.length-1; i++)
         {
-            arr[i+start] = newArr[i];
+            newArr[i] = arr[start + i];
         }
         //System.out.println("c");
         return arr;
