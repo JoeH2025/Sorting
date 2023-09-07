@@ -8,7 +8,8 @@ import java.util.*;
 public class Sorting
 {
     // instance variables - replace the example below with your own
-    
+    static long mComps = 0;
+    static long mSwaps = 0;
 
     /**
      * Constructor for objects of class SortingMethods
@@ -29,120 +30,155 @@ public class Sorting
     {
         int lowIndex = 0;
         int temp;
+        long comps = 0;
+        long swaps = 0;
         for(int i = 0; i < arr.length; i++)
         {
+            comps++;
             for(int j = i; j < arr.length; j++)
             {
+                comps++;
                 if(arr[j] < arr[lowIndex])
                 {
                     lowIndex = j;
                 }
+                comps++;
             }
             temp = arr[lowIndex];
             arr[lowIndex] = arr[i];
             arr[i] = temp;
+            swaps++;
             //System.out.println(Arrays.toString(arr));
             lowIndex = i+1;
         }
-        
+        System.out.print(" " + comps + ", " + swaps);
         //return Arrays.toString(arr);
     }
     public static void bubbleSort(int[] arr)
     {
         int temp;
+        long comps = 0;
+        long swaps = 0;
         for(int i = 0; i < arr.length; i++)
         {
+            comps++;
             for(int j = 0; j < arr.length - i - 1; j++)
             {
+                comps++;
                 if(arr[j] > arr[j+1])
                 {
                     temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
+                    swaps++;
                 }
+                comps++;
             }
         }
+        System.out.print(" " + comps + ", " + swaps);
         //return Arrays.toString(arr);
     }
     public static void insertionSort(int[] arr)
     {
         int num = 0;
         int index = 0;
+        long comps = 0;
+        long swaps = 0;
         for(int i = 1; i < arr.length; i++)
         {
+            comps++;
             num = arr[i];
             index = i - 1;
             while(index != -1 && arr[index] > num)
             {
                 arr[index + 1] = arr[index];
+                swaps++;
                 index--;
             }
             arr[index+1] = num;
+            swaps++;
         }
         //return Arrays.toString(arr);
+        System.out.print(" " + comps + ", " + swaps/3);
     }
     public static void mergeSort(int[] arr)
     {
-        Arrays.toString(mergeSort(0, arr.length, arr));
+        mComps = 0;
+        mSwaps = 0;
+        mergeSort(0, arr.length -1, arr);
+        System.out.print(" " + mComps + ", " + mSwaps/3);
         // return Arrays.toString(mergeSort(0, arr.length, arr));
     }
-    public static int[] mergeSort(int start, int end, int[] arr)
+    public static void mergeSort(int start, int end, int[] arr)
     {
-        if(start == end)
+        if(start >= end)
         {
             //System.out.println("a");
-            return arr;
+            return;
         }
         else
         {
             int mid = (start+end)/2;
             mergeSort(start, mid, arr);
             mergeSort(mid+1, end, arr);
-            return merge(start, mid, end, arr);
+            merge(start, mid, end, arr);
         }
     }
-    public static int[] merge(int start, int mid, int end, int[] arr)
+    public static void merge(int start, int mid, int end, int[] arr)
     {
         //System.out.println("b");
         int index = start;
-        int index2 = mid;
+        int index2 = mid + 1;
         int newArrIndex = 0;
         int[] newArr = new int[end-start+1];
-        while(index < mid && index2 < end)
+        while(index <= mid && index2 <= end)
         {
-            if(arr[index] > arr[index2])
+            if(arr[index] < arr[index2])
             {
                 newArr[newArrIndex] = arr[index];
                 index++;
+                mSwaps++;
             }
             else
             {
                 newArr[newArrIndex] = arr[index2];
                 index2++;
+                mSwaps++;
             }
             newArrIndex++;
+            mComps +=3;
         }
-        if(index2 < end)
+        
+        //System.out.println(index);
+        //System.out.println(index2);
+        //System.out.println(Arrays.toString(newArr) +" after w loop");
+        while(index <= mid)
         {
-            for(int i = index2; i < end; i++)
-            {
-                newArr[i-start] = arr[i];
-            }
+            newArr[newArrIndex] = arr[index];
+            index++;
+            newArrIndex++;
+            mSwaps++;
+            mComps++;
         }
-        else if(index < mid)
+        while(index2 <= end)
         {
-            for(int i = index; i < mid; i++)
-            {
-                newArr[i-start] = arr[i];
-            }
+            newArr[newArrIndex] = arr[index2];
+            index2++;
+            newArrIndex++;
+            mSwaps++;
+            mComps++;
         }
+        mComps +=2;
+        //System.out.println(Arrays.toString(newArr) +" after fix loop");
         for(int i = 0; i < newArr.length; i++)
         {
-           System.out.println(start + "," + i);
-            arr[start + i] = newArr[i];
+           //System.out.println(start + "," + i + "," + newArr.length + "," + arr.length);
+           arr[i+start] = newArr[i];
+           mSwaps++;
+           mComps++;
         }
+        mComps++;
         //System.out.println("c");
-        return arr;
     }
     public static void test()
     {
