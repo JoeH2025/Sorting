@@ -57,8 +57,8 @@ public class Sorting
                 if(arr[j] > arr[j+1])
                 {
                     temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
                 }
             }
         }
@@ -66,22 +66,18 @@ public class Sorting
     }
     public static void insertionSort(int[] arr)
     {
-        int temp;
+        int num = 0;
+        int index = 0;
         for(int i = 1; i < arr.length; i++)
         {
-            for(int j = i-1; j > 0; j--)
+            num = arr[i];
+            index = i - 1;
+            while(index != -1 && arr[index] > num)
             {
-                if(arr[i] < arr[j])
-                {
-                    temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-                else
-                {
-                    break;
-                }
+                arr[index + 1] = arr[index];
+                index--;
             }
+            arr[index+1] = num;
         }
         //return Arrays.toString(arr);
     }
