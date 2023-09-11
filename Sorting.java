@@ -51,7 +51,7 @@ public class Sorting
             //System.out.println(Arrays.toString(arr));
             lowIndex = i+1;
         }
-        System.out.print(" " + comps + ", " + swaps);
+        System.out.print(", " + comps + ", " + swaps);
         //return Arrays.toString(arr);
     }
     public static void bubbleSort(int[] arr)
@@ -75,7 +75,7 @@ public class Sorting
                 comps++;
             }
         }
-        System.out.print(" " + comps + ", " + swaps);
+        System.out.print(", " + comps + ", " + swaps);
         //return Arrays.toString(arr);
     }
     public static void insertionSort(int[] arr)
@@ -99,14 +99,14 @@ public class Sorting
             swaps++;
         }
         //return Arrays.toString(arr);
-        System.out.print(" " + comps + ", " + swaps/3);
+        System.out.print(", " + comps + ", " + swaps/3);
     }
     public static void mergeSort(int[] arr)
     {
         mComps = 0;
         mSwaps = 0;
         mergeSort(0, arr.length -1, arr);
-        System.out.print(" " + mComps + ", " + mSwaps/3);
+        System.out.print(", " + mComps + ", " + mSwaps/3);
         // return Arrays.toString(mergeSort(0, arr.length, arr));
     }
     public static void mergeSort(int start, int end, int[] arr)

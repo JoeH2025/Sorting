@@ -111,6 +111,12 @@ public class SortingBenchmarkV1
             curTime = System.currentTimeMillis();
             Sorting.insertionSort(arrayToSort);
             System.out.println(", " + (System.currentTimeMillis() - curTime) / 1000.0);
+            
+            populateReversedArray(arrayToSort);
+            System.out.print(size + ", reverse, merge");
+            curTime = System.currentTimeMillis();
+            Sorting.mergeSort(arrayToSort);
+            System.out.println(", " + (System.currentTimeMillis() - curTime) / 1000.0);
         }
 
         int[] sizes2 = {1000000, 10000000, 100000000, 200000000};
