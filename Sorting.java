@@ -34,10 +34,13 @@ public class Sorting{
             
             //Swaps the lowest number with the current index, documents the swap,
             //and adjusts the low index
-            temp = arr[lowIndex];
-            arr[lowIndex] = arr[i];
-            arr[i] = temp;
-            swaps++;
+            mComps++;
+            if(lowIndex != i) {
+                temp = arr[lowIndex];
+                arr[lowIndex] = arr[i];
+                arr[i] = temp;
+                swaps++;
+            }
             lowIndex = i + 1;
         }
         
@@ -49,25 +52,31 @@ public class Sorting{
      */
     public static void bubbleSort(int[] arr) {
         int temp;
+        boolean sorted = true;
         long comps = 0;
         long swaps = 0;
         
         for (int i = 0; i < arr.length; i++) {
             comps++;
-            
             for (int j = 0; j < arr.length - i - 1; j++) {
                 comps++;
-                
                 if (arr[j] > arr[j + 1]) {
                     //Swaps the larger number with the lower one & documents the swap
                     temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                     swaps++;
+                    sorted = false;
                 }
                 
                 comps++;
             }
+            mComps++;
+            if(sorted)
+            {
+                break;
+            }
+            sorted = false;
         }
         
         System.out.print(", " + comps + ", " + swaps);
@@ -121,7 +130,17 @@ public class Sorting{
     public static void mergeSort(int start, int end, int[] arr) {
         if (start >= end) {
             return;
-        } else {
+        } else if (start + 1 == end) {
+            mComps++;
+            if(arr[start] > arr[end]) {
+                int temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+                mSwaps++;
+                return;
+            }
+        }
+         else {
             int mid = (start + end) / 2;
             
             mergeSort(start, mid, arr);
